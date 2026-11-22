@@ -3,29 +3,70 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>개인정보처리방침 - shorts-upload</title>
-<style>body{font-family:-apple-system,"Noto Sans KR",sans-serif;max-width:720px;margin:48px auto;padding:0 16px;line-height:1.7;color:#222}h2{margin-top:32px}a{color:#1a5fb4}</style>
+<meta name="description" content="쇼츠엔진의 YouTube 연결 앱 shorts-upload의 정보 접근, 이용, 보관, 전달과 삭제·권한 철회 방법을 안내합니다.">
+<title>개인정보처리방침 | shorts-upload · 쇼츠엔진</title>
+<style>
+:root{color-scheme:light}*{box-sizing:border-box}body{margin:0;background:#f5f7fb;color:#172033;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR",sans-serif;line-height:1.8}main{max-width:860px;margin:48px auto;padding:36px;background:#fff;border:1px solid #dfe5ef;border-radius:16px}h1{font-size:2rem;line-height:1.35}h2{margin-top:36px;font-size:1.25rem}h3{font-size:1.05rem}a{color:#174ba5;text-underline-offset:3px}a:focus-visible{outline:3px solid #174ba5;outline-offset:4px}li{margin:8px 0}.note{background:#edf3ff;border-left:4px solid #174ba5;padding:16px}footer{margin-top:36px;border-top:1px solid #dfe5ef;padding-top:20px}@media(max-width:600px){main{margin:16px;padding:24px}h1{font-size:1.7rem}}
+</style>
 </head>
 <body>
+<main>
+<p><a href="https://teamelijah.github.io/">shorts-upload · 쇼츠엔진 홈</a></p>
 <h1>개인정보처리방침</h1>
-<p>시행일: 2026년 11월 21일</p>
+<p>시행일·최종 수정일: 2026년 11월 22일</p>
+<p>Elijah Team(이하 “운영자”)은 쇼츠엔진과 YouTube 연결 앱 <strong>shorts-upload</strong>(이하 “이 도구”)를 운영합니다. 이 도구는 운영자의 승인을 받은 초대 사용자가 각자의 컴퓨터에서 영상을 제작하고 본인의 YouTube 채널에 게시하도록 돕습니다. 이 방침은 이용 신청, 제작 API, YouTube 계정 연결에 적용됩니다.</p>
 
-<h2>1. 목적</h2>
-<p>shorts-upload(이하 "이 도구")는 운영자 본인의 YouTube 채널에 영상을 업로드하고, 제목·설명·썸네일·공개 일정·재생목록을 관리하기 위한 개인용 도구입니다.</p>
+<h2>1. 접근·수집하는 정보와 목적</h2>
+<ul>
+<li><strong>이용 신청·초대:</strong> 신청 이메일, 신규·기기 추가 구분, 신청·이메일 확인·승인·발송 시각과 상태를 이용해 이메일 확인, 승인 심사, 초대코드와 설치 안내 발송을 처리합니다.</li>
+<li><strong>설치·사용량 관리:</strong> 사용자·설치 식별자, 초대코드와 설치 세션의 해시, 이용 기간·회수 상태, 요청 식별자·내용의 해시, 생성 종류·요청 시각·사용량을 관리해 접근 권한, 사용자별 한도, 중복 요청과 부정 사용을 확인합니다.</li>
+<li><strong>YouTube 연결·관리:</strong> 사용자가 허용한 OAuth 인증 코드·접근 토큰·갱신 토큰으로 채널 ID·채널명, 영상·재생목록 정보와 게시 상태를 확인합니다. 업로드 시 사용자가 선택한 영상·썸네일과 제목·설명·태그·공개 상태·예약 시각 등을 YouTube에 전달하며, 요청한 영상·재생목록·워터마크 관리를 수행합니다.</li>
+<li><strong>제작 요청:</strong> 이미지·음성·배경 영상 생성을 위해 장면 설명, 대사, 선택한 목소리·속도 등 생성 설정과, 배경 영상 기능을 사용할 때 입력 이미지를 처리합니다. 나만의 목소리를 만들면 이름·스타일 설명·생성 상태·Google 목소리 식별자도 보관합니다.</li>
+<li><strong>접속·운영 정보:</strong> 요청 처리 과정에서 IP 주소와 접속 시각 등 기술 정보가 Cloudflare 등 서비스 제공자에게 처리될 수 있습니다. 신청 남용 방지를 위해 서버는 IP 주소에서 계산한 식별값을 DB에 기록합니다.</li>
+</ul>
+<p>이 도구는 Google 계정 비밀번호를 수집하지 않습니다. 신청 이메일은 사용자가 신청 화면에 입력한 주소이며, YouTube 권한과 별개로 받습니다.</p>
 
-<h2>2. 사용하는 정보</h2>
-<p>이 도구는 운영자가 Google 계정으로 허용한 범위 안에서 YouTube Data API를 통해 운영자 본인 채널의 정보(채널 ID, 업로드한 영상과 재생목록 정보)에만 접근합니다. 다른 사용자의 개인정보는 수집하지 않습니다.</p>
+<h2>2. Google·YouTube 권한을 사용하는 방식</h2>
+<p>이 도구는 YouTube Data API를 사용합니다. 현재 요청하는 권한은 <code>https://www.googleapis.com/auth/youtube</code>이며, 연결한 채널 확인과 영상 업로드·정보 변경·썸네일·재생목록·예약 공개·워터마크 관리에 사용합니다. 실제 동작은 사용자가 선택한 기능과 실행 명령에 따릅니다. 영상 제작만으로 YouTube에 게시하지 않으며 업로드 기본 상태는 비공개입니다.</p>
+<p>Google 로그인·권한 동의는 Google 화면에서 진행합니다. 사용자는 연결할 계정과 채널을 선택하고, 이 도구는 채널명·채널 ID를 확인합니다. 이후 업로드 전 설정 채널과 인증된 채널의 일치를 검사합니다.</p>
+<p>Google API로 받은 사용자 정보는 해당 사용자가 요청한 YouTube 기능을 제공하는 목적으로만 이용합니다. 광고 타기팅, 판매, 신용 평가 또는 생성형 AI 모델의 학습·개선에 이용하지 않으며, YouTube API에서 받은 정보를 제작용 AI 프롬프트로 자동 전달하지 않습니다. 운영자의 접근은 지원·보안 대응 등 필요한 범위로 제한합니다.</p>
+<p>이 도구의 Google API로부터 받은 정보 사용 및 다른 앱으로의 전송은 제한적 사용 요건을 포함한 <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API 서비스 사용자 데이터 정책</a>을 따릅니다.</p>
 
-<h2>3. 보관</h2>
-<p>로그인 결과로 받은 인증 토큰은 운영자의 컴퓨터에만 저장되며, 외부 서버로 전송하거나 제3자와 공유하지 않습니다.</p>
+<h2>3. 저장 위치와 서버의 인증 중계</h2>
+<h3>사용자 컴퓨터</h3>
+<p>대본, 채널 설정, 생성한 이미지·음성, 렌더링한 영상, 썸네일과 업로드 기록은 기본적으로 사용자 컴퓨터의 작업 폴더에 저장됩니다. YouTube 갱신 토큰과 설치 세션도 해당 컴퓨터의 사용자별 인증 경로에 보관됩니다. 로컬 인증 파일은 OS 파일 권한으로 보호하며, 컴퓨터·백업·공유 폴더의 접근 관리 책임도 사용자에게 있습니다.</p>
+<h3>운영 서버와 서비스 제공자</h3>
+<p>공용 OAuth 연결에서는 Cloudflare Worker가 Google 인증 코드를 토큰으로 교환합니다. 인증 결과는 암호화하여 Supabase에 중계용으로 저장하고, 연결을 시작한 설치 세션에 전달합니다. 인증 시도는 10분 동안 유효하며, 만료된 중계 기록은 후속 인증 시작 시 정리됩니다. 유효 시간이 끝났다고 즉시 물리 삭제되는 구조는 아닙니다.</p>
+<p>인증을 갱신하거나 권한을 철회할 때도 클라이언트는 토큰을 HTTPS로 Worker에 전달하고 Worker가 Google에 요청합니다. 따라서 토큰이 사용자 컴퓨터에만 머물고 외부 서버로 전송되지 않는 방식은 아닙니다. 현재 서버는 이 중계 기록 외에 YouTube 토큰을 상시 보관하는 별도 토큰 저장소를 사용하지 않습니다.</p>
+<p>초대·사용자·설치·이용 한도·요청 이력과 나만의 목소리 정보는 전용 Supabase DB에서 관리합니다. 일반 생성 결과의 이미지·음성·완성 영상은 이 도구의 DB나 Storage에 사용자 콘텐츠 보관용으로 저장하지 않고 클라이언트에 전달합니다. 배경 영상 작업 식별자와 상태는 재조회를 위해 서버에 남습니다. 나만의 목소리는 Google에 저장하여 이후 생성과 미리듣기에 사용합니다. Supabase Storage는 배포 ZIP·업데이트 파일과 운영자가 제공하는 공통 목소리 샘플 등의 배포에 사용합니다.</p>
 
-<h2>4. Google 사용자 데이터</h2>
-<p>이 도구가 Google API로 받은 정보의 사용과 다른 앱으로의 전송은 <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API 서비스 사용자 데이터 정책</a>(제한적 사용 요건 포함)을 따릅니다.</p>
+<h2>4. 정보가 전달되는 서비스</h2>
+<ul>
+<li><strong>Google·YouTube:</strong> OAuth 인증·토큰 갱신·권한 철회, YouTube API 조회·게시와 이미지·음성·배경 영상·목소리 생성 요청을 처리합니다. 사용자가 입력한 생성 대사·설명·입력 이미지 등은 Google 생성 서비스에 전달될 수 있습니다. Google 계정과 YouTube에 저장된 자료는 Google의 정책도 적용받습니다.</li>
+<li><strong>Cloudflare:</strong> 신청·관리 화면, 제작 API와 OAuth 중계를 제공합니다.</li>
+<li><strong>Supabase:</strong> 전용 DB와 배포 파일·공통 샘플의 Storage를 제공합니다.</li>
+<li><strong>Gmail:</strong> 현재 구성에서 신청 이메일 확인과 승인·설치 안내 메일을 발송합니다. 수신 이메일과 메일 내용이 처리됩니다.</li>
+<li><strong>GitHub Pages:</strong> 이 홈페이지와 개인정보처리방침을 제공합니다. 이 페이지에는 광고·별도 방문 분석 스크립트를 넣지 않습니다.</li>
+</ul>
+<p>이들 서비스의 인프라에 따라 정보가 대한민국 외 지역에서 처리될 수 있습니다. 사용자가 별도로 선택해 이용하는 AI 편집기·대본 작성 도구에는 해당 제공자의 정책이 적용됩니다.</p>
+<p>관련 정책: <a href="https://policies.google.com/privacy">Google 개인정보처리방침</a> · <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare 개인정보처리방침</a> · <a href="https://supabase.com/privacy">Supabase 개인정보처리방침</a> · <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub 개인정보처리방침</a></p>
 
-<h2>5. 권한 철회</h2>
-<p>Google 계정의 <a href="https://myaccount.google.com/permissions">타사 앱 및 서비스</a> 화면에서 언제든지 이 도구의 접근 권한을 해제할 수 있습니다.</p>
+<h2>5. 보관과 삭제</h2>
+<p>서버의 신청·사용자·설치·생성 이력은 이용 승인, 이용 기간·한도 관리, 문제 해결과 남용 방지에 필요한 동안 보관합니다. 현재 이 기록들에는 일괄 자동 삭제 기한이 설정되어 있지 않습니다. 관리 화면에서 사용자를 삭제하면 설치 권한과 초대가 회수되지만 사용 이력의 영구 삭제와는 구분됩니다.</p>
+<p>신청 정보·계정·생성 이력·나만의 목소리 등 운영 서버 정보의 삭제를 원하면 등록한 이메일로 <a href="mailto:teamelijah.ministry@gmail.com">teamelijah.ministry@gmail.com</a>에 요청해 주세요. 운영자는 요청자의 본인 여부와 삭제 범위를 확인하여 관련 정보를 삭제 또는 익명 처리하고 결과를 안내합니다. 법령상 보관 의무 등으로 남겨야 하는 정보가 있으면 항목과 이유를 별도로 안내합니다. 삭제 요청 메일에는 비밀번호·초대코드·인증 토큰을 포함하지 마세요.</p>
+<p>YouTube API를 통해 저장한 사용자 데이터에 대한 삭제 요청은 본인 확인 후 7일 이내 처리합니다. Google에 대한 접근 권한 철회와 운영 서버 데이터 삭제는 각각 요청할 수 있습니다. Google에 보관된 사용자 전용 목소리의 삭제도 위 연락처로 요청할 수 있습니다.</p>
+<p>운영자는 사용자 컴퓨터의 로컬 파일을 원격 삭제하지 않습니다. 사용자는 인증 파일·채널 자료·백업을 직접 삭제할 수 있습니다. YouTube에 업로드한 영상은 로컬 파일 또는 서비스 계정 삭제만으로 지워지지 않으며, 사용자가 YouTube에서 별도로 관리합니다.</p>
 
-<h2>6. 문의</h2>
-<p>문의: <a href="https://github.com/teamelijah/teamelijah.github.io/issues">이 사이트 저장소의 GitHub Issues</a></p>
+<h2>6. 연결 해제와 권한 철회</h2>
+<p><a href="https://myaccount.google.com/connections">Google 계정의 타사 앱 및 서비스 연결</a>에서 shorts-upload의 접근 권한을 철회할 수 있습니다. 클라이언트의 YouTube 연결 해제 기능도 Google 권한 철회와 해당 로컬 토큰 제거를 요청합니다. 철회하면 다시 연결하기 전까지 YouTube 조회·업로드·관리를 사용할 수 없습니다. 철회만으로 이미 게시된 영상이 삭제되지는 않습니다.</p>
+
+<h2>7. 보호 조치와 변경 안내</h2>
+<p>통신에는 HTTPS를 사용합니다. 운영용 Google 인증 정보와 OAuth 클라이언트 비밀값은 서버 Secret으로 관리하며 배포 ZIP에 넣지 않습니다. 초대코드·설치 세션은 서버에 해시로 저장하고 OAuth 중계 결과는 암호화합니다. 서버 DB 접근은 운영 권한으로 제한합니다.</p>
+<p>방침 변경 시 이 페이지에 수정일과 내용을 반영합니다. Google 사용자 데이터의 이용 목적이나 범위가 바뀌면 해당 기능 이용 전에 변경 사항을 안내하고 필요한 동의를 받습니다.</p>
+<footer>
+<p>운영·개인정보 문의: Elijah Team<br><a href="mailto:teamelijah.ministry@gmail.com">teamelijah.ministry@gmail.com</a></p>
+<p><a href="https://teamelijah.github.io/">홈페이지</a> · <a href="https://www.youtube.com/t/terms">YouTube 서비스 약관</a></p>
+</footer>
+</main>
 </body>
 </html>

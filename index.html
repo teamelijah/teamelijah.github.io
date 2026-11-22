@@ -4,13 +4,49 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="google-site-verification" content="fywIduOZTDBbE2izZlH5493UHm9E9EKoq4NuTdH4Y_M" />
-<title>shorts-upload</title>
-<style>body{font-family:-apple-system,"Noto Sans KR",sans-serif;max-width:720px;margin:48px auto;padding:0 16px;line-height:1.7;color:#222}a{color:#1a5fb4}</style>
+<meta name="description" content="shorts-upload는 쇼츠엔진 사용자가 대본으로 영상을 제작하고 본인의 YouTube 채널에 업로드하도록 돕는 도구입니다.">
+<title>shorts-upload | 쇼츠엔진</title>
+<style>
+:root{color-scheme:light}*{box-sizing:border-box}body{margin:0;background:#f5f7fb;color:#172033;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR",sans-serif;line-height:1.8}main{max-width:820px;margin:48px auto;padding:36px;background:#fff;border:1px solid #dfe5ef;border-radius:16px}h1{font-size:2.25rem;line-height:1.2;margin:8px 0}h2{margin-top:32px;font-size:1.25rem}a{color:#174ba5;text-underline-offset:3px}a:focus-visible{outline:3px solid #174ba5;outline-offset:4px}.label{color:#465672;margin:0}.intro{font-size:1.1rem}.note{background:#edf3ff;border-left:4px solid #174ba5;padding:16px}li{margin:8px 0}footer{margin-top:36px;padding-top:20px;border-top:1px solid #dfe5ef}@media(max-width:600px){main{margin:16px;padding:24px}h1{font-size:2rem}}
+</style>
 </head>
 <body>
+<main>
+<header>
+<p class="label">쇼츠엔진 · 생각을 영상으로.</p>
 <h1>shorts-upload</h1>
-<p>shorts-upload는 운영자가 직접 제작한 영상을 운영자 본인의 YouTube 채널에 올리고, 제목·설명·썸네일·공개 일정·재생목록을 관리하기 위해 쓰는 개인용 도구입니다.</p>
-<p>이 도구는 일반 사용자에게 서비스를 제공하지 않으며, 운영자 본인의 Google 계정으로만 로그인해 사용합니다.</p>
-<p><a href="privacy.html">개인정보처리방침</a></p>
+<p class="intro">대본으로 영상을 만들고, 본인의 YouTube 채널에 업로드하는 제작 도구입니다.</p>
+</header>
+<p>쇼츠엔진의 YouTube 연결 앱 이름은 <strong>shorts-upload</strong>입니다. 운영자의 승인을 받은 초대 사용자는 각자의 컴퓨터에 프로그램을 설치하고, 본인의 Google 계정과 YouTube 채널을 연결해 사용할 수 있습니다. 여러 사용자가 동일한 OAuth 앱을 이용하며, 각 사용자가 허용한 채널에서만 작업합니다.</p>
+<section aria-labelledby="features">
+<h2 id="features">어떤 일을 할 수 있나요?</h2>
+<ul>
+<li>준비한 대본을 바탕으로 Google API를 이용해 이미지와 음성을 생성합니다. 설정에 따라 배경 영상 생성과 원하는 목소리 스타일 생성도 이용할 수 있습니다.</li>
+<li>생성한 이미지·음성·자막을 사용자의 컴퓨터에서 조합하고 완성 영상을 로컬에 저장합니다.</li>
+<li>YouTube Data API를 이용해 선택한 본인 채널의 정보를 확인하고 영상을 업로드합니다.</li>
+<li>사용자의 요청에 따라 영상 제목·설명·썸네일·공개 상태·예약 공개·재생목록과 채널 워터마크를 관리합니다.</li>
+</ul>
+</section>
+<section aria-labelledby="connection">
+<h2 id="connection">Google 계정 연결이 필요한 이유</h2>
+<p>YouTube 업로드와 채널 관리 기능을 실행하려면 사용자가 Google 동의 화면에서 YouTube 접근을 허용해야 합니다. 현재 앱은 YouTube 계정 관리 권한(<code>https://www.googleapis.com/auth/youtube</code>)을 요청합니다. 이 권한은 업로드뿐 아니라 채널 확인, 영상 정보·썸네일·재생목록·워터마크 관리에 사용합니다.</p>
+<p>Google 계정 비밀번호는 이 도구가 수집하지 않습니다. 계정 연결 과정은 Google 로그인 화면에서 진행하며, 연결 후 채널명과 채널 ID를 확인합니다. 업로드 전에는 설정된 채널과 현재 권한의 채널이 일치하는지 검사합니다.</p>
+<p class="note">영상 제작과 YouTube 게시 단계는 구분됩니다. 업로드는 사용자가 명령을 실행할 때 진행하며 기본 공개 상태는 비공개입니다. 공개·예약 공개 기능은 Google 및 YouTube의 승인 상태와 해당 채널의 이용 가능 범위에 따라 제한될 수 있습니다.</p>
+</section>
+<section aria-labelledby="start">
+<h2 id="start">이용 순서</h2>
+<ol>
+<li><a href="https://shorts-engine-dev.teamelijah-ministry.workers.dev/apply">사용 신청 페이지</a>에서 이메일을 확인하고 운영자의 승인을 받습니다.</li>
+<li>안내 메일의 배포 파일을 내려받아 압축을 풀고 시작 파일을 실행한 뒤 초대코드를 입력합니다.</li>
+<li>VS Code에서 프로젝트를 열고 대본을 준비하여 영상을 제작합니다. 초대 배포의 기본 제작 API에는 운영자가 관리하는 Google Cloud 구성을 사용합니다.</li>
+<li>YouTube 게시가 필요할 때 본인의 Google 계정과 채널을 연결하고, 제작 결과·대상 채널·공개 상태를 확인한 뒤 업로드합니다.</li>
+</ol>
+</section>
+<footer>
+<p>운영: Elijah Team · 문의: <a href="mailto:teamelijah.ministry@gmail.com">teamelijah.ministry@gmail.com</a></p>
+<p><a href="https://teamelijah.github.io/privacy.html">개인정보처리방침</a> · <a href="https://myaccount.google.com/connections">Google 계정 연결 관리</a></p>
+<p>YouTube 기능에는 <a href="https://www.youtube.com/t/terms">YouTube 서비스 약관</a>이 적용됩니다.</p>
+</footer>
+</main>
 </body>
 </html>
